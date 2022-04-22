@@ -3,12 +3,13 @@
 
 import * as React from 'react'
 // 🐨 you'll also need to get the fetchPokemon function from ../pokemon:
-import {PokemonDataView, fetchPokemon} from '../pokemon'
+import {PokemonDataView, fetchPokemon, PokemonErrorBoundary} from '../pokemon'
 
 // 💰 use it like this: fetchPokemon(pokemonName).then(handleSuccess, handleFailure)
 
 // 🐨 create a variable called "pokemon" (using let)
 let pokemon
+let pokemonErr
 
 // 💣 delete this now...
 // const pokemon = {
@@ -28,12 +29,14 @@ let pokemon
 // 💰 For example: somePromise.then(resolvedValue => (someValue = resolvedValue))
 const pokemonPromise = fetchPokemon('pikachu').then(
 	resolvedValue => (pokemon = resolvedValue),
+	err => (pokemonErr = err),
 )
 
 function PokemonInfo() {
 	// 🐨 if there's no pokemon yet, then throw the pokemonPromise
 	// 💰 (no, for real. Like: `throw pokemonPromise`)
 	if (!pokemon) throw pokemonPromise
+	if (pokemonErr) throw pokemonErr
 
 	// if the code gets it this far, then the pokemon variable is defined and
 	// rendering can continue!
@@ -52,9 +55,11 @@ function App() {
 		<div className="pokemon-info-app">
 			<div className="pokemon-info">
 				{/* 🐨 Wrap the PokemonInfo component with a React.Suspense component with a fallback */}
-				<React.Suspense fallback={<div>...loading</div>}>
-					<PokemonInfo />
-				</React.Suspense>
+				<PokemonErrorBoundary>
+					<React.Suspense fallback={<div>...loading</div>}>
+						<PokemonInfo />
+					</React.Suspense>
+				</PokemonErrorBoundary>
 			</div>
 		</div>
 	)
