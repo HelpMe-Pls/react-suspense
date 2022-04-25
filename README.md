@@ -17,9 +17,9 @@
 - Implement cache invalidation to re-fetch stale data ([at 2:00](https://epicreact.dev/modules/react-suspense/cache-resources-extra-credit-solution-3)).
 
 ## Suspense Image
-- What if you have an experience that doesn’t look any good until the image is actually loaded? Or what if you want to render a fallback in the image’s place while it’s loading (you want to provide your own loading UI)?
-- In that case, with suspense, we have an opportunity to make this experience a lot better. We have two related options:
-1. Make an `<Img/>` component that suspends until the browser has actually loaded the image ([at 2:15](https://epicreact.dev/modules/react-suspense/suspense-image-solution)).
+- What if your UI doesn’t look any good *until* the image is actually loaded? Or what if you want to render a fallback in the image’s place *while it’s loading* (you want to provide your own loading UI)?
+- In that case, with `suspense`, we have an opportunity to make this experience a lot better. We have two related options:
+1. Make an `<Img/>` component that suspends until the **browser** has actually preloaded the image ([at 2:15](https://epicreact.dev/modules/react-suspense/suspense-image-solution)).
 2. Make a request for the image alongside the data ([at 1:25](https://epicreact.dev/modules/react-suspense/suspense-image-extra-credit-solution-1)), then utilizing the benefits of "[render as you fetch](https://epicreact.dev/modules/react-suspense/suspense-image-extra-credit-solution-2)".
 
 
