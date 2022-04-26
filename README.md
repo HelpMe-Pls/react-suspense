@@ -25,3 +25,6 @@
 # Suspense with a custom hook
 - Abstracting away the fetching, caching and `Suspense`'s logic into a reusable [custom hook](https://epicreact.dev/modules/react-suspense/suspense-with-a-custom-hook-extra-credit-solution-1) to make your code more declarative.
 
+# Coordinate Suspending components with SuspenseList
+- Give the user is a more [predictable](https://epicreact.dev/modules/react-suspense/coordinate-suspending-components-with-suspenselist-solution) loading experience, even if it means that they see the data displayed out of order from how it was loaded.
+
