@@ -1,4 +1,5 @@
 # What I've learnt
+- Concurrency can be defined as the ability to do numerous tasks at the same time. Concurrency isn’t precisely a feature; instead, it’s a behind-the-scenes function that allows React to prepare many instances of your UI simultaneously (concurrently).
 ###### *For more details, see [`src/exercise/*.md`](https://github.com/HelpMe-Pls/react-suspense/tree/master/src/exercise) files*
 -------------
 
