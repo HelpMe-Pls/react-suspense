@@ -29,3 +29,22 @@
 ## Coordinate Suspending components with SuspenseList
 - Give the user is a more [predictable](https://epicreact.dev/modules/react-suspense/coordinate-suspending-components-with-suspenselist-solution) loading experience, even if it means that they see the data displayed out of order from how it was loaded.
 
+
+## `useTransition`
+- With React *v18*, you now have some tools that can give the user a better-perceived performance by delaying some state updating operations by telling React that some updating operations have a higher priority than others.
+- The `useTransition()` hook tells React that some state updates have a **lower priority** (i.e. every other state updates or UI rendering trigger has a higher priority). When invoked, it returns an array of 2 items:
+
+```ts
+const [isPending, startTransition] = useTransition();
+// `isPending`: a boolean indicates whether there are currently any state updates that are still pending
+// `startTransition(callback)`: allows you to wrap any UI updates inside `callback` to tell React that it’s a low-priority update.
+```
+
+- Use this hook with ***extra care***, since it's related to [performance optimization](https://github.com/HelpMe-Pls/react-performance#what-ive-learnt).
+
+
+## `useDeferredValue`
+- If you ***have access*** to the state updating code and have some state updates that should be treated with a lower priority, it makes sense to use `useTransition()`. In case you ***don't*** have that access (for example, if a third-party library handles it), you can use the `useDeferredValue()` hook instead. 
+- `useDeferredValue()` allows you to wrap the ***value*** generated or updated as a result of the state update (either the state value itself or a value computed based on the state value)
+- [How to use](https://blog.openreplay.com/usetransition-vs-usedeferredvalue-in-react-18) `useTransition()` or `useDeferredValue()`
+
